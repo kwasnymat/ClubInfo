@@ -1,0 +1,8 @@
+<div class="sidebar d-flex flex-column" >
+  <img src="../../../assets/Clubinfo.jpg" class="logo">
+  <nav>
+    <ul>
+      <li *ngFor="let league of leagues" [routerLink]="['/', league.path]" [routerLinkActive]="'active'">{{ league.name }}</li>
+    </ul>
+  </nav>
+</div>

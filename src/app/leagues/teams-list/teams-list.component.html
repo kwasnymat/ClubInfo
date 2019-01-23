@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div *ngIf="teams && teams.length > 0;" class="row" style="height: 100vh">
+    <div class="col-3 flex-column d-flex align-items-center justify-content-center"   *ngFor="let team of teams; let i = index" (click)="goToTeamDetails(team)">
+      <img src="{{team?.logo}}" alt="Description"/>
+      <p>{{ team?.name }}</p>
+    </div>
+  </div>
+</div>
+

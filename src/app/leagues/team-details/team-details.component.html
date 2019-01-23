@@ -1,0 +1,56 @@
+<div class="container-fluid" *ngFor="let team of teams; let i = index">
+  <div class="row flex-row d-flex align-items-center justify-content-center" style="height: auto">
+    <div class="col-3 flex-row d-flex align-items-center justify-content-center">
+      <img src="{{team.logo}}" alt="TeamLogo"/>
+    </div>
+    <div class="col-9">
+      <h1> {{ team.name }}</h1>
+      <h2>Estabilished in: {{ team.formed }}</h2>
+    </div>
+  </div>
+  <div class="row" style="height: auto">
+    <div class="col-3 flex-column d-flex align-items-center justify-content-center">
+      <h2>Stadium name: </h2>
+      <h3> {{ team.stadium }} </h3>
+      <img id="stadium" src="{{ team.stadiumPhoto }}" alt="Stadium"/>
+      <h4>Capacity: {{ team.capacity }}</h4>
+    </div>
+    <div class="col-9">
+      <h1>Description</h1>
+      <p>{{ team.description }}</p>
+    </div>
+  </div>
+  <div class="row" style="height: auto">
+    <div class="col-3 flex-column d-flex align-items-center justify-content-start">
+      <h3>Jersey</h3>
+      <img src="{{ team.jersey }}" alt="TeamJersey"/>
+    </div>
+    <div class="col-9 flex-column d-flex align-items-center justify-content-start">
+      <table>
+        <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Birth</th>
+          <th>Position</th>
+          <th>Weight</th>
+          <th>Height</th>
+          <th>Nationality</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let player of players; let i = index" >
+          <td> <img src="{{ player.playerPhoto }}" alt="playerPhoto"/></td>
+          <td> {{ player.name }}</td>
+          <td> {{ player.birth  | date:'shortDate' }}</td>
+          <td> {{ player.position | uppercase }}</td>
+          <td> {{ player.weight}}</td>
+          <td> {{ player.height }}</td>
+          <td> {{ player.nationality }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

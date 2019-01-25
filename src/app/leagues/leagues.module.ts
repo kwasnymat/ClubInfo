@@ -6,20 +6,28 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
 import {RouterModule} from '@angular/router';
 import {TeamResolve} from './team-resolve.service';
 import {PlayerResolve} from './player-resolve.service';
+import {TeamSearchComponent} from './team-search/team-search.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SearchService} from './search.service';
+
 
 @NgModule({
-  declarations: [TeamsListComponent, TeamDetailsComponent],
+  declarations: [TeamsListComponent, TeamDetailsComponent, TeamSearchComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
-    TeamsListComponent
+    TeamsListComponent,
+    TeamSearchComponent
   ],
   providers: [
     LeagueResolveService,
     TeamResolve,
-    PlayerResolve
+    PlayerResolve,
+    SearchService
   ]
 })
 export class LeaguesModule { }

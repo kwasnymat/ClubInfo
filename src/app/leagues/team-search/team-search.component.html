@@ -1,0 +1,9 @@
+<section class="filter-wrapper">
+  <div class="keyword-wrapper">
+    <input type="text" id="keyword" [formControl]="queryField"  placeholder="Search for teams..." autofocus/>
+  </div>
+  <ul class="filter-select">
+    <li *ngFor="let team of teams" class="filter-select-list"><img src="{{ team.logo }}" alt="" width="50" height="50"><p class="artist-name">{{ team.name }}</p>
+      <span class="tags" *ngFor='let genre of team?.genres | slice:0:6'>{{genre}}</span>
+  </ul>
+</section>

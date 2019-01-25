@@ -7,11 +7,12 @@ import {HttpModule} from '@angular/http';
 import {CoreModule} from './core-module/core-module';
 import {AppRoutingModule} from './app-routing.module';
 import {LeaguesRoutingModule} from './leagues/leagues-routing.module';
+import {SearchService} from './leagues/search.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,9 +20,9 @@ import {LeaguesRoutingModule} from './leagues/leagues-routing.module';
     LeaguesModule,
     HttpModule,
     AppRoutingModule,
-    LeaguesRoutingModule
+    LeaguesRoutingModule,
   ],
-  providers: [TeamsService],
+  providers: [TeamsService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

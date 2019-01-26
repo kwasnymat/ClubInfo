@@ -6,7 +6,8 @@ import {TeamSearchComponent} from './leagues/team-search/team-search.component';
 
 
 const appRoutes : Route[] = [
-  {path: '', component: <any>TeamSearchComponent},
+  {path: '', redirectTo: 'search', pathMatch: 'full'},
+  {path: 'search', component: <any>TeamSearchComponent},
   {path: 'premierleague', component: <any>TeamsListComponent, resolve: {Teams:LeagueResolveService}},
   {path: 'laliga', component: <any>TeamsListComponent, resolve: {Teams: LeagueResolveService}},
   {path: 'seriea', component: <any>TeamsListComponent, resolve: {Teams: LeagueResolveService}},

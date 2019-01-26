@@ -16,7 +16,7 @@ export class TeamsListComponent implements OnInit {
 
   constructor(private teamsService: TeamsService,
               private router: Router,
-              private route : ActivatedRoute) { }
+              private route : ActivatedRoute) {}
 
   ngOnInit() {
     this.loadTeam();
@@ -39,7 +39,7 @@ export class TeamsListComponent implements OnInit {
   }
 
   goToTeamDetails(team : Team){
-    this.router.navigate([this.route.snapshot.routeConfig.path, team.id])
+    this.router.navigate([this.route.snapshot.routeConfig.path, team.id]);
   }
 
 }

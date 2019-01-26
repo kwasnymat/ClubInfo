@@ -10,12 +10,20 @@ const teamsRoutes : Route[] = [
     component: <any>TeamDetailsComponent,
     resolve: { team: TeamResolve, player: PlayerResolve}
   }
+];
 
+const searchRoutes : Route[] = [
+  {
+    path: ':id',
+    component: <any>TeamDetailsComponent,
+    resolve: {team: TeamResolve, player: PlayerResolve}
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(teamsRoutes)
+    RouterModule.forChild(teamsRoutes),
+    RouterModule.forChild(searchRoutes)
   ],
   exports: [
     RouterModule

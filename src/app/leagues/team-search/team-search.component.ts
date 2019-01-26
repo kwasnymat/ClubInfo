@@ -3,6 +3,8 @@ import { SearchService } from '../search.service';
 import { FormControl } from '@angular/forms';
 import {Team} from '../models/team';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import {Router, ActivatedRoute} from '@angular/router';
+
 
 
 
@@ -14,8 +16,11 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 export class TeamSearchComponent implements OnInit {
   queryField : FormControl = new FormControl();
   teams: Team[];
+  team;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.searchTeam();
@@ -25,13 +30,22 @@ export class TeamSearchComponent implements OnInit {
     this.queryField.valueChanges
       .pipe(
         debounceTime(200),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        switchMap(queryField => this.searchService.search(queryField))
       )
-      .subscribe(queryField => this.searchService.search(queryField)
-        .subscribe((teams) => {
-          this.teams = teams;
-        });
-      )
+      .subscribe((teams) => {
+        this.teams = teams
+      });
+      // .subscribe(queryField => this.searchService.search(queryField)
+      //   .subscribe((teams) => {
+      //     this.teams = teams;
+      //   });
+      // )
   }
+
+  goToTeamDetails(team : Team){
+    this.router.navigate( [team.id]);
+  }
+
 
 }

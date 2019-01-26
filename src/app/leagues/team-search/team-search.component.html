@@ -1,9 +1,17 @@
-<section class="filter-wrapper">
-  <div class="keyword-wrapper">
-    <input type="text" id="keyword" [formControl]="queryField"  placeholder="Search for teams..." autofocus/>
+<div class="container-fluid">
+  <div class="row flex-row d-flex align-items-center justify-content-center" style="height: auto">
+    <div class="col-12 flex-column d-flex align-items-center justify-content-center">
+      <div id="header">
+        <h1>Welcome to Club Info</h1>
+        <p>Search for your favourite club or choose league from sidebar</p>
+      </div>
+      <div id="searcher" class="w-25">
+        <input type="text" id="keyword" class="form-control-lg w-100" [formControl]="queryField" placeholder="Search for teams..." autofocus autocomplete="off"/>
+      </div>
+      <ul class="filter-select list-group list-group-flush w-25">
+        <li *ngFor="let team of teams" class="filter-select-list list-group-item list-group-item-action" (click)="goToTeamDetails(team)">
+          <img src="{{ team.logo }}" alt="" width="50" height="50"><p class="d-inline ml-3">{{ team.name }}</p>
+      </ul>
+    </div>
   </div>
-  <ul class="filter-select">
-    <li *ngFor="let team of teams" class="filter-select-list"><img src="{{ team.logo }}" alt="" width="50" height="50"><p class="artist-name">{{ team.name }}</p>
-      <span class="tags" *ngFor='let genre of team?.genres | slice:0:6'>{{genre}}</span>
-  </ul>
-</section>
+</div>

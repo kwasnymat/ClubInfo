@@ -14,7 +14,7 @@ const teamsRoutes : Route[] = [
 
 const searchRoutes : Route[] = [
   {
-    path: ':id',
+    path: 'search/:id',
     component: <any>TeamDetailsComponent,
     resolve: {team: TeamResolve, player: PlayerResolve}
   }

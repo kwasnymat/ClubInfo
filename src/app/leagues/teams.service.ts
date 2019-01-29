@@ -21,8 +21,7 @@ export class TeamsService {
     return this.http.get(this.leagueURL + `${name}`)
       .pipe(
         map(response => response.json().teams),
-        map((TeamList: any[]) => TeamList.map(team => new Team(team.strTeam, team.strTeamBadge, team.idTeam, team.intFormedYear, team.strStadium, team.intStadiumCapacity, team.strStadiumThumb,
-          team.strDescriptionEN, team.strTwitter, team.strInstagram, team.strWebsite, team.strYoutube, team.strTeamJersey)))
+        map((TeamList: any[]) => TeamList.map(team => new Team(team.strTeam, team.strTeamBadge, team.idTeam)))
       );
   }
 
@@ -30,8 +29,10 @@ export class TeamsService {
     return this.http.get(this.teamUrl + `${id}`)
       .pipe(
         map(response => response.json().teams),
-        map((TeamDetails : any[]) => TeamDetails.map(team => new Team(team.strTeam, team.strTeamBadge, team.idTeam, team.intFormedYear, team.strStadium, team.intStadiumCapacity, team.strStadiumThumb,
-          team.strDescriptionEN, team.strTwitter, team.strInstagram, team.strWebsite, team.strYoutube, team.strTeamJersey)))
+        map((TeamDetails : any[]) =>
+          TeamDetails.map(team => new Team(team.strTeam, team.strTeamBadge, team.idTeam, team.intFormedYear,
+            team.strStadium, team.intStadiumCapacity, team.strStadiumThumb, team.strDescriptionEN, team.strTwitter, team.strInstagram,
+            team.strWebsite, team.strYoutube, team.strTeamJersey)))
       );
   }
 
@@ -39,7 +40,10 @@ export class TeamsService {
     return this.http.get(this.playersUrl + `${id}`)
       .pipe(
         map(response => response.json().player),
-        map((PlayersList : any[]) => PlayersList.map(player => new Player(player.strThumb, player.strPlayer, player.dateBorn, player.strPosition, player.strWeight, player.strHeight, player.strNationality)))
+        map((PlayersList : any[]) =>
+          PlayersList.map(player =>
+            new Player(player.strThumb, player.strPlayer, player.dateBorn, player.strPosition, player.strWeight,
+              player.strHeight, player.strNationality)))
       );
   }
 }

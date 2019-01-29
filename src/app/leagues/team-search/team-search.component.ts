@@ -44,7 +44,7 @@ export class TeamSearchComponent implements OnInit {
   }
 
   goToTeamDetails(team : Team){
-    this.router.navigate( [team.id]);
+    this.router.navigate( ['search', team.id]);
   }
 
 
